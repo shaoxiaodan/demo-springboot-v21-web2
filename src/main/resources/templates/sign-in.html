@@ -32,18 +32,18 @@
           <div class="card-body p-6">
             <div class="mb-4">
               <a href="index.html"><img th:src="@{/picture/logo-primary.svg}" class="mb-2" alt=""></a>
-              <p class="mb-6">Please enter your user information.</p>
+              <p class="mb-6" th:text="#{login.tip}">Please enter your user information.</p>
             </div>
             <!-- Form -->
             <form>
               <!-- Username -->
               <div class="mb-3">
-                <label for="email" class="form-label">Username or email</label>
+                <label for="email" class="form-label" th:text="#{login.username}">Username or email</label>
                 <input type="email" id="email" class="form-control" name="email" placeholder="Email address here" required="">
               </div>
               <!-- Password -->
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label" th:text="#{login.password}">Password</label>
                 <input type="password" id="password" class="form-control" name="password" placeholder="**************" required="">
               </div>
               <!-- Checkbox -->
@@ -51,15 +51,22 @@
                   mb-4">
                 <div class="form-check custom-checkbox">
                   <input type="checkbox" class="form-check-input" id="rememberme">
-                  <label class="form-check-label" for="rememberme">Remember
+                  
+				  <!--
+				  <label class="form-check-label" for="rememberme" th:text="#{login.rememberme}">Remember
                       me</label>
+					  -->
+					  <label class="form-check-label" for="rememberme">
+						[[#{login.rememberme}]]
+					  </label>
+					  
                 </div>
 
               </div>
               <div>
                 <!-- Button -->
                 <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">Sign
+                  <button type="submit" class="btn btn-primary" th:text="#{login.btn}">Sign
                     in</button>
                 </div>
 
@@ -76,6 +83,11 @@
                 </div>
               </div>
 
+			  <!-- 语言切换 -->
+			  <div align="center">
+				<a class="btn btn-sm">中文</a>
+				<a class="btn btn-sm">English</a>
+			  </div>
 
             </form>
           </div>
