@@ -23,7 +23,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/index.html").setViewName("index");
 	}
 
-	// 注册自定义国家化组件
+	// 注册自定义国际化组件
+	// @Bean注入到spring中，使其生效
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new MyLocaleResolver(); // 返回自定义语言组件
