@@ -13,7 +13,7 @@ public class MyLoginHandlerInterceptor implements HandlerInterceptor {
 
 		// 登录成功之后，应该有用户的session
 		Object loginUser = request.getSession().getAttribute("loginUser");
-
+		System.out.println("preHandle::loginUser=" + loginUser);
 		if (loginUser == null) { // 没有登录
 			request.setAttribute("msg", "没有权限，请先登录。");
 			request.getRequestDispatcher("/login.html").forward(request, response);
