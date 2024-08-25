@@ -26,15 +26,20 @@
     <div id="db-wrapper">
       <!-- navbar vertical -->
        <!-- Sidebar -->
+	   <!--
 		<div th:insert="~{index::sidebar}"></div>
-
+		-->
+		<div th:replace="~{common/common::sidebar(active='list.html')}"></div>
 
        <!-- Page content -->
       <div id="page-content">
         <div class="header @@classList">
   <!-- navbar -->
-<div th:insert="~{index::topbar}"></div>
-
+  <!--
+	<div th:insert="~{index::topbar}"></div>
+	-->
+	<div th:replace="~{common/common::topbar}"></div>
+	
 </div>
         <!-- Container fluid -->
         <div class="bg-primary pt-10 pb-21"></div>
@@ -45,10 +50,10 @@
               <div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="mb-2 mb-lg-0">
-                    <h3 class="mb-0  text-white">Projects</h3>
+                    <h3 class="mb-0  text-white">员工管理中心</h3>
                   </div>
                   <div>
-                    <a href="#" class="btn btn-white">Create New Project</a>
+                    <a th:href="@{/emp.html}" class="btn btn-white">添加新员工</a>
                   </div>
                 </div>
               </div>
@@ -62,219 +67,35 @@
               <div class="card">
                 <!-- card header  -->
                 <div class="card-header bg-white  py-4">
-                  <h4 class="mb-0">Active Projects</h4>
+                  <h4 class="mb-0">员工列表数据</h4>
                 </div>
                 <!-- table  -->
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0">
                     <thead class="table-light">
                       <tr>
-                        <th>Project name</th>
-                        <th>Hours</th>
-                        <th>priority</th>
-                        <th>Members</th>
-                        <th>Progress</th>
+						<th>id</th>
+                        <th>lastName</th>
+                        <th>email</th>
+                        <th>gender</th>
+                        <th>department</th>
+						<th>birth</th>
+						<th>操作</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="align-middle"><div class="d-flex
-                            align-items-center">
-                            <div>
-                              <div class="icon-shape icon-md border p-4
-                                rounded-1">
-                                <img th:src="@{/picture/dropbox-logo.svg}" alt="">
-                              </div>
-                            </div>
-                            <div class="ms-3 lh-1">
-                              <h5 class=" mb-1"> <a href="#" class="text-inherit">Dropbox Design
-                                  System</a></h5>
-
-                            </div>
-                          </div></td>
-                        <td class="align-middle">34</td>
-                        <td class="align-middle"><span class="badge
-                            bg-warning">Medium</span></td>
-                        <td class="align-middle"><div class="avatar-group">
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-1.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-2.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-3.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm avatar-primary">
-                              <span class="avatar-initials rounded-circle
-                                fs-6">+5</span>
-                            </span>
-                          </div></td>
-                        <td class="align-middle text-dark"><div class="float-start me-3">15%</div>
-                          <div class="mt-2">
-                            <div class="progress" style="height: 5px;">
-                              <div class="progress-bar" role="progressbar" style="width:15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="align-middle"><div class="d-flex
-                            align-items-center">
-                            <div>
-                              <div class="icon-shape icon-md border p-4
-                                rounded-1">
-                                <img th:src="@{/picture/slack-logo.svg}" alt="">
-                              </div>
-                            </div>
-                            <div class="ms-3 lh-1">
-                              <h5 class=" mb-1"> <a href="#" class="text-inherit">Slack Team UI Design</a></h5>
-                            </div>
-                          </div></td>
-                        <td class="align-middle">47</td>
-                        <td class="align-middle"><span class="badge
-                            bg-danger">High</span></td>
-                        <td class="align-middle"><div class="avatar-group">
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" src="static/picture/avatar-4.jpg" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-5.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-6.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm avatar-primary">
-                              <span class="avatar-initials rounded-circle
-                                fs-6">+5</span>
-                            </span>
-                          </div></td>
-                        <td class="align-middle text-dark"><div class="float-start me-3">35%</div>
-                          <div class="mt-2">
-                            <div class="progress" style="height: 5px;">
-                              <div class="progress-bar" role="progressbar" style="width:35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="align-middle"><div class="d-flex
-                            align-items-center">
-                            <div>
-                              <div class="icon-shape icon-md border p-4
-                                rounded-1">
-                                <img th:src="@{/picture/github-logo.svg}" alt="">
-                              </div>
-                            </div>
-                            <div class="ms-3 lh-1">
-                              <h5 class=" mb-1"> <a href="#" class="text-inherit">GitHub Satellite</a></h5>
-                            </div>
-                          </div></td>
-                        <td class="align-middle">120</td>
-                        <td class="align-middle"><span class="badge bg-info">Low</span></td>
-                        <td class="align-middle"><div class="avatar-group">
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-7.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-8.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-9.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm avatar-primary">
-                              <span class="avatar-initials rounded-circle
-                                fs-6">+1</span>
-                            </span>
-                          </div></td>
-                        <td class="align-middle text-dark"><div class="float-start me-3">75%</div>
-                          <div class="mt-2">
-                            <div class="progress" style="height: 5px;">
-                              <div class="progress-bar" role="progressbar" style="width:75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="align-middle"><div class="d-flex
-                            align-items-center">
-                            <div>
-                              <div class="icon-shape icon-md border p-4
-                                rounded-1">
-                                <img th:src="@{/picture/3dsmax-logo.svg}" alt="">
-                              </div>
-                            </div>
-                            <div class="ms-3 lh-1">
-                              <h5 class=" mb-1"> <a href="#" class="text-inherit">3D Character Modelling</a></h5>
-                            </div>
-                          </div></td>
-                        <td class="align-middle">89</td>
-                        <td class="align-middle"><span class="badge
-                            bg-warning">Medium</span></td>
-                        <td class="align-middle"><div class="avatar-group">
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-10.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-11.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-12.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm avatar-primary">
-                              <span class="avatar-initials rounded-circle
-                                fs-6">+5</span>
-                            </span>
-                          </div></td>
-                        <td class="align-middle text-dark"><div class="float-start me-3">63%</div>
-                          <div class="mt-2">
-                            <div class="progress" style="height: 5px;">
-                              <div class="progress-bar" role="progressbar" style="width:63%" aria-valuenow="63" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="align-middle"><div class="d-flex
-                            align-items-center">
-                            <div>
-                              <div class="icon-shape icon-md border p-4 rounded
-                                bg-primary">
-                                <img th:src="@{/picture/layers-logo.svg}" alt="">
-                              </div>
-                            </div>
-                            <div class="ms-3 lh-1">
-                              <h5 class=" mb-1"> <a href="#" class="text-inherit">Webapp Design System</a>
-                              </h5>
-                            </div>
-                          </div></td>
-                        <td class="align-middle">108</td>
-                        <td class="align-middle"><span class="badge
-                            bg-success">Track</span></td>
-                        <td class="align-middle"><div class="avatar-group">
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-13.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-14.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm">
-                              <img alt="avatar" th:src="@{/picture/avatar-15.jpg}" class="rounded-circle">
-                            </span>
-                            <span class="avatar avatar-sm avatar-primary">
-                              <span class="avatar-initials rounded-circle
-                                fs-6">+5</span>
-                            </span>
-                          </div></td>
-                        <td class="align-middle text-dark"><div class="float-start me-3">100%</div>
-                          <div class="mt-2">
-                            <div class="progress" style="height: 5px;">
-                              <div class="progress-bar bg-success" role="progressbar" style="width:100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-
-                        </td>
-                      </tr>
+						<tr th:each="emp:${emps}">
+							<td th:text="${emp.id}"></td>
+							<td th:text="${emp.lastName}"></td>
+							<td th:text="${emp.email}"></td>
+							<td th:text="${emp.gender == 0 ? '女' : '男'}"></td>
+							<td th:text="${emp.department.departmentName}"></td>
+							<td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm:ss')}"></td>
+							<td>
+								<button class="btn btn-sm btn-primary">编辑</button>
+								<button class="btn btn-sm btn-danger">删除</button>
+							</td>
+						</tr>
                     </tbody>
                   </table>
                 </div>
