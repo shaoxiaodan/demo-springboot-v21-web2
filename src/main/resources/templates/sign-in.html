@@ -34,12 +34,24 @@
               <a href="index.html"><img th:src="@{/picture/logo-primary.svg}" class="mb-2" alt=""></a>
               <p class="mb-6" th:text="#{login.tip}">Please enter your user information.</p>
             </div>
+			
             <!-- Form -->
-            <form>
+            <form th:action="@{/login.html}" method="post">
+				<!-- 基于if判断的写法
+				<p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}">111</p>
+				-->
+				
+				<!-- 基于switch多重条件判断的写法 -->
+				<div th:if="${not #strings.isEmpty(msg)}" th:switch="${msg}">
+					<p style="color:red" th:case="login.err1" th:text="#{login.err1}">aaa</p>
+					<p style="color:red" th:case="login.err2" th:text="#{login.err2}">bbb</p>
+					<p style="color:red" th:case="login.err3" th:text="#{login.err3}">ccc</p>
+				</div>
+				
               <!-- Username -->
               <div class="mb-3">
-                <label for="email" class="form-label" th:text="#{login.username}">Username or email</label>
-                <input type="email" id="email" class="form-control" name="email" placeholder="Email address here" required="">
+                <label for="text" class="form-label" th:text="#{login.username}">Username</label>
+                <input type="text"  id="username" class="form-control" name="username" th:placeholder="#{login.username}" required="">
               </div>
               <!-- Password -->
               <div class="mb-3">
