@@ -21,7 +21,6 @@ public class MyLoginHandlerInterceptor implements HandlerInterceptor {
 		} else {
 			return true;
 		}
-
 	}
 
 }
