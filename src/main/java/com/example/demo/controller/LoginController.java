@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -13,21 +14,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
 	@GetMapping("/login.html")
-	public String loginPage() {
+	public String loginPage(HttpServletRequest request, Model model) {
+
 		System.out.println("loginPage...");
+		System.out.println("loginPage::msg=" + request.getParameter("msg"));
+		
+		String msg = "请登录。";
+//		model.addAttribute("msg", request.getParameter("msg"));
+		model.addAttribute("msg", msg);
 		return "sign-in";
 	}
-	
+
 	@PostMapping("/login.html")
 //	@ResponseBody
-	public String doLogin(
-			@RequestParam("username") String userName, 
-			@RequestParam("password") String passWord,
-			Model model,
-			HttpSession session) {
+	public String doLogin(@RequestParam("username") String userName, @RequestParam("password") String passWord,
+			Model model, HttpSession session) {
 
 		String msg = "";
-		
+
 		if (!StringUtils.isEmpty(userName) && !StringUtils.isEmpty(passWord)) {
 			if ("123".equals(passWord)) {
 				// 登录成功
@@ -43,11 +47,17 @@ public class LoginController {
 				return "/sign-in";
 //				return "redirect:/login.html";
 			}
-		}else {
+		} else {
 			msg = "用户名或密码不能为空。";
 			System.out.println("doLogin::msg=" + msg);
 			return "redirect:/login.html";
 		}
+	}
+
+	@GetMapping("/logout.html")
+	public String doLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login.html";
 	}
 
 }
